@@ -120,6 +120,10 @@ system-wide.)
 
 .. _install pip: http://www.pip-installer.org/en/latest/installing.html
 
+The latest version of this package is always available at its
+`PyPI package page <https://pypi.python.org/pypi/thermocouples_reference>`_
+(this is what pip downloads).
+
 Requirements
 ============
 
