@@ -1,8 +1,13 @@
+#!/usr/bin/python
 import os
 from setuptools import setup
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
+if not all(os.path.exists('thermocouples_reference/source_%s.py'%s)
+           for s in ['OMEGA', 'NIST']):
+    raise RuntimeError('Missing source files! Please run `make` from this directory.')
 
 setup(name='thermocouples_reference',
     version='0.20',
