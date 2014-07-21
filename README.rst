@@ -129,6 +129,16 @@ This module should function in both Python 2 (from 2.6 on) and Python 3. The req
 - ``scipy`` (optional, only needed for inverse lookup)
 
 
+Development
+-----------
+
+A `GitHub repository`_ is used for development purposes and contains some
+auxiliary code used to generate the package. Please submit any found
+bugs, especially data errors! Additional data curves are also welcome.
+
+.. _GitHub repository: https://github.com/NaniteWikipedia/thermocouples_reference_devel
+
+
 Disclaimer
 ----------
 This module is provided for educational purposes. For any real-world
