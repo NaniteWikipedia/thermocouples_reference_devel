@@ -1,6 +1,6 @@
 """
 Python module for computing thermocouple emf values from temperatures.
-This module just contains the generic thermocouple clas and helper
+This module just contains the generic thermocouple class and helper
 functions.
 """
 
