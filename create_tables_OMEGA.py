@@ -8,6 +8,8 @@ extracted from the coefficient tables downloaded from
     http://www.omega.com/temperature/z/pdf/z202.pdf
 Note: these are probably IPTS68 calibrated
 
+The output of this file, but not this file itself, is distributed with the package.
+
 Disclaimers:
 (Author) I make no warranties as to the accuracy of this module, and shall
         not be liable for any damage that may result from errors or omissions.

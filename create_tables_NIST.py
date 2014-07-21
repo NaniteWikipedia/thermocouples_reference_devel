@@ -9,6 +9,8 @@ taken from the coefficient tables downloaded from
 the NIST Standard Reference Database 60, Version 2.0 (Web Version)
     (see http://srdata.nist.gov/its90/main/ for more information)
 
+The output of this file, but not this file itself, is distributed with the package.
+
 Disclaimers:
 (Author) I make no warranties as to the accuracy of this module, and shall
         not be liable for any damage that may result from errors or omissions.
