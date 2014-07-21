@@ -69,7 +69,7 @@ class Polynomial_Gaussian_Piecewise_Function(object):
         return self.table[-1][1]
     
     def __repr__(self):
-        return "<piecewise polynomial+gaussian, domain {} to {} in {}, output in {}; {} calibrated, from {}>".format(
+        return "<piecewise polynomial+gaussian, domain %g to %g in %s, output in %s; %s calibrated, from %s>"%(
             self.minT, self.maxT,
             Tunits_short[self.Tunits], Vunits_short[self.Vunits],
             self.calibration, self.source)
@@ -244,21 +244,21 @@ def doc_emf(uT, uV):
         Compute electromotive force for given thermocouple measurement junction
         temperature and given reference junctions temperature.
         
-        This method uses {} temperature units and {}.
+        This method uses %s temperature units and %s.
 
         Parameters
         ----------
         T : array_like
-            Temperature or array of temperatures (in {}).
+            Temperature or array of temperatures (in %s).
         Tref : float, optional
-            Reference junctions' temperature (in {}),
-            defaults to {}.
+            Reference junctions' temperature (in %s),
+            defaults to %g.
             If derivative != 0, Tref is irrelevant.
         derivative : integer, optional
             Use this parameter to evaluate the functional derivative of
             the emf function at a given temperature.
             defaults to derivative=0 (no derivative).
-        out_of_range : {{'raise', 'nan', 'extrapolate'}}, optional
+        out_of_range : {'raise', 'nan', 'extrapolate'}, optional
             Determines behaviour for out of range temperatures: raise an
             exception, return NaNs, or extrapolate using the nearest
             polynomial. Note - do not trust the extrapolation!
@@ -266,10 +266,10 @@ def doc_emf(uT, uV):
         Returns
         -------
         emf : array_like
-            computed emfs (in {})
+            computed emfs (in %s)
             or, if derivative != 0,
-            emf derivative (in {} / {}**derivative)
-        """.format(Tlong, Vlong, Tshort, Tshort, Tref_default,
+            emf derivative (in %s / %s**derivative)
+        """%(Tlong, Vlong, Tshort, Tshort, Tref_default,
                    Vshort, Vshort, Tshort)
         return f
     return fn
@@ -290,32 +290,32 @@ def doc_inverse(uT,uV):
         You must have SciPy installed to use this method.
         (see documentation of .func.inverse for more notes on implementation)
         
-        This method uses {} temperature units and {}.
+        This method uses %s temperature units and %s.
         
         Parameters
         ----------
         emf : float
-            The measured voltage (in {}).
+            The measured voltage (in %s).
         Tref : float, optional
-            The reference junctions' temperature (in {}).
+            The reference junctions' temperature (in %s).
             This allows you to perform cold-junction compensation. Note that
-            Tref = {}, the default, corresponds to the reference junctions
+            Tref = %g, the default, corresponds to the reference junctions
             being at the freezing point of water.
         Tstart : float, optional
-            Suggested starting temperature (in {}).
+            Suggested starting temperature (in %s).
             You can hasten the search convergence by providing a good starting
             guess here. If not provided, the midpoint of the entire temperature
             range will be used.
         Vtol : float, optional
-            Tolerance of voltage in search (in {}),
-            defaults to {}.
+            Tolerance of voltage in search (in %s),
+            defaults to %.3e.
         
         Returns
         -------
         T : float
-            Junction temperature (in {}), such that:
+            Junction temperature (in %s), such that:
               emf == func(T) - func(Tref)    (to within Vtol)
-        """.format(Tlong, Vlong, Vshort, Tshort, Tref_default, Tshort,
+        """%(Tlong, Vlong, Vshort, Tshort, Tref_default, Tshort,
                    Vshort, Vtol_default, Tshort)
         return f
     return fn
@@ -390,8 +390,8 @@ class Thermocouple_Reference(object):
         self.composition = composition
     
     def __repr__(self):
-        rng = "{:.1f} to {:.1f}".format(self.func.minT,self.func.maxT)
-        return "<{} thermocouple reference ({} {})>".format(
+        rng = "%.1f to %.1f"%(self.func.minT,self.func.maxT)
+        return "<%s thermocouple reference (%s %s)>"%(
                 self.type, rng, Tunits_short[self.func.Tunits])
     
     @property
@@ -453,7 +453,7 @@ class Thermocouple_Reference(object):
         #mul, add = self._mats_Tunits_from['C'][0]
         #Tref = Tref*mul + add
         f_ref = self.func(Tref)
-        if Tstart != None: Tstart = Tstart*mul + add
+        #if Tstart != None: Tstart = Tstart*mul + add
         T = self.func.inverse(emf+f_ref,
                     Tstart=Tstart, Vtol=Vtol)
         #imul, iadd = self._mats_Tunits_to['C'][0]
